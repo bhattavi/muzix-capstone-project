@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.model.Login;
 import com.model.User;
 import com.service.UserServiceImpl;
 
@@ -65,6 +67,21 @@ public class AppController {
 	@PutMapping("/updateuser/{id}")
 	public ResponseEntity updateUser(@PathVariable("id") int id, @RequestBody User user) {
 		return uservice.updateUser(id, user);
+
+	}
+	
+	@PostMapping("/login")
+	public ResponseEntity saveBlog(@RequestBody Login login) {
+
+		
+		List<User> ul = uservice.getAllUsersList();
+		for(User u : ul) {
+			if(u.getEmail().equals(login.getEmail()) && u.getPassword().equals(login.getPassword())) {
+				return new ResponseEntity<>(u, HttpStatus.OK);
+			}
+		}
+		System.out.println(ul);
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
 	}
 

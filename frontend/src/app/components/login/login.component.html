@@ -1,11 +1,8 @@
 
-<h1>Registration</h1>
+<h1>Login</h1>
 
-<form (ngSubmit) = "addUser(mydata)" #mydata=ngForm>
+<form (ngSubmit) = "login(mydata)" #mydata=ngForm>
  
- <label for="uname">Name</label>
-<input type="text" id="uname"  ngModel name= 'uname' required #uname=ngModel/>
-<div *ngIf = 'uname.invalid'> Name can not be blank </div>
 <label for="email">Email</label>
 <input type="email" id="email"  ngModel name= 'email' required  #email=ngModel/>
 <div *ngIf = 'email.invalid'>
@@ -18,7 +15,7 @@
 </div>
 <label for="city">Password</label>
 <input type="password" id="password"  ngModel name= 'password'/>
-<button>Register</button>
+<button>Login</button>
 
 
 

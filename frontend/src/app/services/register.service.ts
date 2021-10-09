@@ -22,4 +22,10 @@ loadUserFromDB(){
       console.log(response);
   })
 }
+
+login(login:any){
+  this.http.post('http://localhost:8080/mainapp/login', login).subscribe((response) => {
+    console.log(response)      
+})
+}
 }

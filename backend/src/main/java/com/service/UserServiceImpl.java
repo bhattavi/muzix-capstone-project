@@ -66,5 +66,12 @@ public class UserServiceImpl implements UserService {
 
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
+	
+	public List<User> getAllUsersList() {
+		// TODO Auto-generated method stub
+		List<User> bl = new ArrayList<>();
+		appDao.findAll().forEach(bl::add);
+		return bl;
+	}
 
 }
