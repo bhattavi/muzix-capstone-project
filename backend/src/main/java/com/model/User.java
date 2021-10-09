@@ -10,12 +10,14 @@ public class User {
   String uname;
   String email;
   String password;
+  
 public User(int userId, String uname, String email, String password) {
 	super();
 	this.userId = userId;
 	this.uname = uname;
 	this.email = email;
 	this.password = password;
+	
 }
 public User() {
 	super();
