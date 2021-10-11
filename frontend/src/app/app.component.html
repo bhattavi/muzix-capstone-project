@@ -1,11 +1,10 @@
-
- <div class="navbar-container">
+<div class="navbar-container">
 
     <!-- Top navbar -->
   
     <mat-toolbar class="navbar" color="warn">
   
-      <button mat-icon-button (click)="snav.toggle()">
+      <button mat-icon-button (click)="snav.toggle()" *ngIf="token">
         <mat-icon>menu</mat-icon>
       </button>
   
@@ -17,11 +16,10 @@
   
       <span class="navbar-spacer"></span>
   
-      <button mat-button [matMenuTriggerFor]="userMenu">
+      <button mat-button [matMenuTriggerFor]="userMenu" *ngIf="token">
         <mat-icon>person</mat-icon>
         <span fxShow fxHide.xs>
-          <!-- {{ token.userName }} -->
-          <p>abhinav</p>
+          {{ token.uname }}
         </span>
       </button>
       <mat-menu #userMenu="matMenu" xPosition="before" yPosition="above" [overlapTrigger]="false">
@@ -37,7 +35,7 @@
   
     <mat-sidenav-container>
       <!-- Side nav -->
-      <mat-sidenav #snav [opened]=" snav.opened" [mode]="'side'" [fixedInViewport]="true" fixedTopGap="56">
+      <mat-sidenav #snav [opened]="token && snav.opened" [mode]="'side'" [fixedInViewport]="true" fixedTopGap="56">
   
         <mat-nav-list>
           <div>
@@ -85,6 +83,4 @@
         <div class="bottom-spacer"></div>
       </mat-sidenav-content>
     </mat-sidenav-container>
-  </div> 
-
-<!-- <router-outlet></router-outlet> -->
+  </div>

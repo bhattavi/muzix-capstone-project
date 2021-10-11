@@ -84,5 +84,17 @@ public class AppController {
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
 	}
+	@PutMapping("/updatefav/{id}/{userId}")
+	public ResponseEntity updateFav(@PathVariable("userId") int userId, @PathVariable("id") String id) {
+
+		
+		return uservice.updateFav(id,userId);
+
+	}
+	
+	@GetMapping("/loadallfav/{userId}")
+	public ResponseEntity loadAllFav(@PathVariable("userId") int userId) {
+		return uservice.getAllFav(userId);
+	}
 
 }

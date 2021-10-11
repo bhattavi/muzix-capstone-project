@@ -73,5 +73,42 @@ public class UserServiceImpl implements UserService {
 		appDao.findAll().forEach(bl::add);
 		return bl;
 	}
+	
+	public ResponseEntity updateFav(String id, int userId) {
+		
+		 
+		 Optional<User> op = appDao.findById(userId);
+			if (op.isPresent()) {
+				User user = op.get();
+				System.out.println(user.getUname());
+				List<String> list = user.getFav();
+				System.out.println(list);
+				
+				list.add(id);
+				user.setFav(new ArrayList<>(list));
+				appDao.delete(user);
+				appDao.save(user);
+				System.out.println(list);
+				
+				
+				
+				return new ResponseEntity<>(HttpStatus.OK);
+			}
+
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	
+	
+	public ResponseEntity getAllFav(int userId) {
+		 Optional<User> op = appDao.findById(userId);
+			if (op.isPresent()) {
+				User user = op.get();
+				
+				return new ResponseEntity<>(user.getFav(), HttpStatus.OK);
+			}
+
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		 
 
 }

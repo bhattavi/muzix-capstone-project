@@ -17,7 +17,7 @@ const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot([
-  { path: 'landingpage', component: LandingpageComponent},
+  { path: 'landingpage', component: LandingpageComponent, canActivate: [RouterGuard]},
   { path: 'artist/:id', component: ArtistDiscographyComponent },
   { path: 'album/:id', component: AlbumComponent},
   { path: 'about', component: AboutComponent},

@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { RegisterService } from './register.service';
 //implements CanActivate
 
 @Injectable()
 export class RouterGuard implements CanActivate {
 
-    constructor(private rs: RegisterService){
+    constructor(private rs: RegisterService, private router: Router){
 
     }
     canActivate(){
-        return this.rs.loadLandingPage().isActivated == true;
+        if(this.rs.getCurrentUser()){
+            return true;
+        }
+        this.router.navigate(['/login']);
+        return false;
     }
 }

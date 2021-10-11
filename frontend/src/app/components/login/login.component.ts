@@ -17,9 +17,9 @@ export class LoginComponent implements OnInit {
 
   login(nf:NgForm){
     
-console.log(nf.value);
+// console.log(nf.value);
    this.rs.login(nf.value);
-  
+  console.log( this.rs.getCurrentUser());
 
   }
 }

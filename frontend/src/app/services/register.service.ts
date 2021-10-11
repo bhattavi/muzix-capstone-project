@@ -30,6 +30,7 @@ login(login:any){
     data => {
       
       this.data = data;
+      console.log(data);
       this.r.navigate(['/landingpage']);
     },
     error =>  {
@@ -48,5 +49,12 @@ loadLandingPage() {
   isActivated: this.isActivated,
   data :this.data
  }
+}
+
+getCurrentUser(){
+  return this.data;
+}
+resetCurrentUser(){
+  this.data = null;
 }
 }

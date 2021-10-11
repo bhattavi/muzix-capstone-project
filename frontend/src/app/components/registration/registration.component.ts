@@ -18,6 +18,7 @@ export class RegistrationComponent implements OnInit {
     console.log('user is added', nf.value);
    this.id++;
   nf.value["userId"] = this.id;
+  nf.value["fav"] = ["5YzCE6dSJC23yNCUyAHXsG"];
    this.rs.toRegister(nf.value);
   
 

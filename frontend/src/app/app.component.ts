@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { RegisterService } from './services/register.service';
 
 @Component({
   selector: 'app-root',
@@ -11,16 +12,19 @@ import { Subscription } from 'rxjs';
 export class AppComponent implements  OnInit{
   title = 'frontend';
   searchString: String;
+  token: any;
   
 
   sub: Subscription;
-  constructor(private router: Router) { }
+  constructor(private router: Router, private rs: RegisterService) { }
 
   ngOnInit() {
     this.searchString = '';
     this.sub = this.router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
-       
+        this.token = this.rs.getCurrentUser();
+        
+       console.log(this.token)
       }
     });
   }
@@ -31,7 +35,14 @@ export class AppComponent implements  OnInit{
   }
 
   logout() {
+    this.token = null;
+    this.rs.resetCurrentUser();
     this.router.navigate(['login']);
+  }
+
+  ngOnDestroy() {
+    this.token = null;
+    this.sub?.unsubscribe();
   }
 
   

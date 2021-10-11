@@ -45,9 +45,11 @@ export class MusicDataService {
   }
  
 
-  addToFavourites(id): Observable<[String]> {
+  addToFavourites(id, user): Observable<[any]> {
     // TODO: make a PUT request to environment.userAPIBase/favourites/:id to add id to favourites
-    return this.http.put<[String]>(`put the backend rest api/${id}`, null);
+    console.log(id);
+    console.log(user);
+    return this.http.put<[any]>(`http://localhost:8080/mainapp/updatefav/${id}/${user}`, null);
   }
 
   removeFromFavourites(id): Observable<any> {
@@ -64,8 +66,8 @@ export class MusicDataService {
     }));
   }
 
-  getFavourites(): Observable<any> {
-    return this.http.get<[String]>("put the backend rest api").pipe(mergeMap(favouritesArray => {
+  getFavourites(id): Observable<any> {
+    return this.http.get<[String]>(`http://localhost:8080/mainapp/loadallfav/${id}`).pipe(mergeMap(favouritesArray => {
       // TODO: Perform the same tasks as the original getFavourites() method, only using "favouritesArray" from above, instead of this.favouritesList
       // NOTE: for the empty array, you will need to use o=>o.next({tracks: []}) instead of o=>{o.next([])}
       if (favouritesArray.length > 0) {

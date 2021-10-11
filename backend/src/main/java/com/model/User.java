@@ -1,7 +1,12 @@
 package com.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+
 
 @Document
 public class User {
@@ -10,6 +15,7 @@ public class User {
   String uname;
   String email;
   String password;
+  List<String> fav;
  
   
 public User(int userId, String uname, String email, String password) {
@@ -18,11 +24,25 @@ public User(int userId, String uname, String email, String password) {
 	this.uname = uname;
 	this.email = email;
 	this.password = password;
+	this.fav = new ArrayList<>();
 	
 }
+
+
+public User(int userId, String uname, String email, String password, List<String> fav) {
+	super();
+	this.userId = userId;
+	this.uname = uname;
+	this.email = email;
+	this.password = password;
+	this.fav = fav;
+}
+
+
 public User() {
 	super();
 	// TODO Auto-generated constructor stub
+	this.fav = new ArrayList<>();
 }
 public int getUserId() {
 	return userId;
@@ -48,7 +68,13 @@ public String getPassword() {
 public void setPassword(String password) {
 	this.password = password;
 }
-  
+public List<String> getFav() {
+	return fav;
+}
+public void setFav(List<String> fav) {
+	this.fav = fav;
+}
+
   
 
  
