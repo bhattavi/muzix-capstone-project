@@ -1,30 +1,47 @@
 
 <h1>Registration</h1>
 
-<form (ngSubmit) = "addUser(mydata)" #mydata=ngForm>
+
+
+<mat-card>
+    <mat-card-content>
+
+        <form (ngSubmit) = "addUser(mydata)" #mydata=ngForm>
  
- <label for="uname">Name</label>
-<input type="text" id="uname"  ngModel name= 'uname' required #uname=ngModel/>
-<div *ngIf = 'uname.invalid'> Name can not be blank </div>
-<label for="email">Email</label>
-<input type="email" id="email"  ngModel name= 'email' required  #email=ngModel/>
-<div *ngIf = 'email.invalid'>
-    <div *ngIf = 'email.errors.required'>
-        Email cannot be blank
-    </div>
-    <div *ngIf = 'email.errors.email'>
-        Enter correct email
-    </div>
-</div>
-<label for="city">Password</label>
-<input type="password" id="password"  ngModel name= 'password'/>
-<button>Register</button>
+           
+            <mat-form-field class="full-width-input">
+           <input matInput placeholder="Name" type="text" id="uname"  ngModel name= 'uname' required #uname=ngModel/>
+           <div *ngIf = 'uname.invalid'> <mat-error>Name cannot be blank</mat-error> </div>
+        </mat-form-field> <br>
+        <mat-form-field class="full-width-input">
+           <input matInput placeholder="Email" type="email" id="email"  ngModel name= 'email' required  #email=ngModel/>
+           <div *ngIf = 'email.invalid'>
+               <div *ngIf = 'email.errors.required'>
+                <mat-error>Email cannot be blank</mat-error>
+               </div>
+               <div *ngIf = 'email.errors.email'>
+                <mat-error>Enter correct email</mat-error>
+               </div>
+           </div>
+        </mat-form-field> <br>
+        <mat-form-field class="full-width-input">
+    
+           <input matInput placeholder="Password" type="password" id="password"  ngModel name= 'password'/>
+        </mat-form-field> <br>
+           <button mat-raised-button color="primary" type="submit" >Register</button>
+           
+          
+            <a mat-raised-button color="accent" [routerLink]="['/login']">
+                <mat-icon>login</mat-icon>&nbsp;&nbsp;&nbsp;Login
+            </a>
+        
+           
+           
+           
+           </form>
 
 
-
-
-
-</form>
-<a href = "/login">Login</a>
+        </mat-card-content>
+</mat-card>
 
 

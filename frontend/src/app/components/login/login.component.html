@@ -1,25 +1,42 @@
 
 <h1>Login</h1>
 
-<form (ngSubmit) = "login(mydata)" #mydata=ngForm>
+
+
+<mat-card>
+    <mat-card-content>
+
+        <form (ngSubmit) = "login(mydata)" #mydata=ngForm>
  
-<label for="email">Email</label>
-<input type="email" id="email"  ngModel name= 'email' required  #email=ngModel/>
-<div *ngIf = 'email.invalid'>
-    <div *ngIf = 'email.errors.required'>
-        Email cannot be blank
-    </div>
-    <div *ngIf = 'email.errors.email'>
-        Enter correct email
-    </div>
-</div>
-<label for="city">Password</label>
-<input type="password" id="password"  ngModel name= 'password'/>
-<button>Login</button>
+          
+        <mat-form-field class="full-width-input">
+           <input matInput placeholder="Email" type="email" id="email"  ngModel name= 'email' required  #email=ngModel/>
+           <div *ngIf = 'email.invalid'>
+               <div *ngIf = 'email.errors.required'>
+                <mat-error>Email cannot be blank</mat-error>
+               </div>
+               <div *ngIf = 'email.errors.email'>
+                <mat-error>Enter correct email</mat-error>
+               </div>
+           </div>
+        </mat-form-field> <br>
+        <mat-form-field class="full-width-input">
+    
+           <input matInput placeholder="Password" type="password" id="password"  ngModel name= 'password'/>
+        </mat-form-field> <br>
+           <button mat-raised-button color="primary" type="submit" >Login</button>
+           
+          
+           
+           
+           
+           </form>
+
+
+        </mat-card-content>
+</mat-card>
 
 
 
-
-</form>
 
 
