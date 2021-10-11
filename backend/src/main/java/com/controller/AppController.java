@@ -31,7 +31,7 @@ import com.service.UserServiceImpl;
 
 @RestController
 @RequestMapping("/mainapp")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4300")
 public class AppController {
 
 	@Autowired

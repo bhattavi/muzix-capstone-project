@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { LandingpageComponent } from './components/landingpage/landingpage.component';
 import { RouterGuard } from './services/routerguard.service';
+import {MusicDataService} from './services/musica-data.service'
+import {SpotifyTokenService} from './services/spotify-token.service'
 
 
 @NgModule({
@@ -26,7 +28,7 @@ import { RouterGuard } from './services/routerguard.service';
     HttpClientModule
   
   ],
-  providers: [RegisterService, RouterGuard],
+  providers: [RegisterService, RouterGuard, MusicDataService, SpotifyTokenService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
