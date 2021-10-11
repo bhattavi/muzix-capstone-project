@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class RegisterService {
+isActivated =false;
+data;
 
-
-  constructor(private http:HttpClient){
+  constructor(private http:HttpClient, private r: Router){
 
   }
     
@@ -24,8 +26,27 @@ loadUserFromDB(){
 }
 
 login(login:any){
-  this.http.post('http://localhost:8080/mainapp/login', login).subscribe((response) => {
-    console.log(response)      
-})
+  this.http.post('http://localhost:8080/mainapp/login', login).subscribe(
+    data => {
+      
+      this.data = data;
+      this.r.navigate(['/landingpage']);
+    },
+    error =>  {
+      alert('Wrong credentials. Please register')
+      this.r.navigate(['/register']);
+      console.log(error)
+    }
+
+    
+  )
+  console.log(this.isActivated)
+}
+
+loadLandingPage() {
+ return {
+  isActivated: this.isActivated,
+  data :this.data
+ }
 }
 }

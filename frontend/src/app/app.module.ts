@@ -7,13 +7,16 @@ import {RegisterService} from 'src/app/services/register.service'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
+import { LandingpageComponent } from './components/landingpage/landingpage.component';
+import { RouterGuard } from './services/routerguard.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    LandingpageComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +26,7 @@ import { LoginComponent } from './components/login/login.component';
     HttpClientModule
   
   ],
-  providers: [RegisterService],
+  providers: [RegisterService, RouterGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
