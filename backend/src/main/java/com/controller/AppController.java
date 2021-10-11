@@ -23,8 +23,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.model.Favorite;
 import com.model.Login;
 import com.model.User;
+import com.service.FavoriteService;
 import com.service.UserServiceImpl;
 
 
@@ -36,6 +38,9 @@ public class AppController {
 
 	@Autowired
 	private UserServiceImpl uservice;
+	
+	@Autowired
+	private FavoriteService favservice;
 
 	@PostMapping("/saveuser")
 	public ResponseEntity saveBlog(@RequestBody User user) {
@@ -84,5 +89,18 @@ public class AppController {
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
 	}
+	
+	@GetMapping("/favorite/{userId}")
+	public List<Favorite> getFavorites(@PathVariable("userId")String userId){
+		return favservice.findByUserId(userId);
+	}
+	
+	@PostMapping("/favorite/add")
+	public ResponseEntity addFavorite(@RequestBody Favorite fav) {
+		favservice.insertDataIntoFavorites(fav);
+		return new ResponseEntity<>(fav,HttpStatus.CREATED);
+	}
+	
+	
 
 }
