@@ -4,29 +4,29 @@ import { LandingpageComponent } from './components/landingpage/landingpage.compo
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { RouterGuard } from './services/routerguard.service'
+import {ArtistDiscographyComponent} from './components/artist-discography/artist-discography.component'
+import { AlbumComponent } from './components/album/album.component';
+import { AboutComponent } from './components/about/about.component';
+import { SearchResultComponent } from './components/search-result/search-result.component';
+import { FavouritesComponent } from './components/favourites/favourites.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+
 
 
 const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot([
-    {
-      path: 'login',
-      component: LoginComponent
-  },
-  {
-      path: 'register',
-      component: RegistrationComponent
-  },{
-    path: '',
-    redirectTo: 'register',
-    pathMatch: 'full'
-  },
-  {
-      path: 'landingpage',
-      component: LandingpageComponent
-     
-  }
+  { path: 'landingpage', component: LandingpageComponent},
+  { path: 'artist/:id', component: ArtistDiscographyComponent },
+  { path: 'album/:id', component: AlbumComponent},
+  { path: 'about', component: AboutComponent},
+  { path: "search", component: SearchResultComponent },
+  { path: "favourites", component: FavouritesComponent },
+  { path: 'register', component: RegistrationComponent },
+  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: '/register', pathMatch: 'full' },
+  { path: '**', component: NotFoundComponent }
 
   ])],
   exports: [RouterModule]

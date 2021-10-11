@@ -47,11 +47,11 @@ export class MusicDataService {
 
   addToFavourites(id): Observable<[String]> {
     // TODO: make a PUT request to environment.userAPIBase/favourites/:id to add id to favourites
-    return this.http.put<[String]>(`https://fast-gorge-00438.herokuapp.com/api/user/favourites/${id}`, null);
+    return this.http.put<[String]>(`put the backend rest api/${id}`, null);
   }
 
   removeFromFavourites(id): Observable<any> {
-    return this.http.delete<[String]>(`https://fast-gorge-00438.herokuapp.com/api/user/favourites/${id}`).pipe(mergeMap(favouritesArray => {
+    return this.http.delete<[String]>(`put the backend rest api/${id}`).pipe(mergeMap(favouritesArray => {
       // TODO: Perform the same tasks as the original getFavourites() method, only using "favouritesArray" from above, instead of this.favouritesList
       // NOTE: for the empty array, you will need to use o=>o.next({tracks: []}) instead of o=>{o.next([])}
       if (favouritesArray.length > 0) {
@@ -65,7 +65,7 @@ export class MusicDataService {
   }
 
   getFavourites(): Observable<any> {
-    return this.http.get<[String]>("https://fast-gorge-00438.herokuapp.com/api/user/favourites/").pipe(mergeMap(favouritesArray => {
+    return this.http.get<[String]>("put the backend rest api").pipe(mergeMap(favouritesArray => {
       // TODO: Perform the same tasks as the original getFavourites() method, only using "favouritesArray" from above, instead of this.favouritesList
       // NOTE: for the empty array, you will need to use o=>o.next({tracks: []}) instead of o=>{o.next([])}
       if (favouritesArray.length > 0) {
