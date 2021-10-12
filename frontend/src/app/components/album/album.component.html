@@ -29,7 +29,7 @@
     <!-- Single "Responsive" Material List Item-->
     <mat-list-item *ngFor="let track of album?.tracks.items">
         <!-- <mat-icon mat-list-icon>queue_music</mat-icon> -->
-        <mat-icon star (click)="addToFavourites(track.id)">queue_music</mat-icon>
+        <mat-icon star (click)="addToFavourites(track)">queue_music</mat-icon>
         <div mat-line>
             <mat-card>
                 <mat-card-content>{{track.track_number}} {{track.name}} 4 -

@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { RegisterService } from 'src/app/services/register.service';
 import { MusicDataService } from '../../services/musica-data.service';
-//import * as data from '../data/SearchResultsAlbum.json';
+
 @Component({
   selector: 'app-album',
   templateUrl: './album.component.html',
@@ -18,22 +18,21 @@ export class AlbumComponent implements OnInit, OnDestroy {
   constructor(private msb: MatSnackBar, private route: ActivatedRoute, private mds: MusicDataService, private rs: RegisterService) { }
 user:any;
   ngOnInit(): void {
-    //this.album = (data as any).default;
-    // this.sub = this.route.params.subscribe(params => {
-    //   this.id = +params['id'];
-    // });
+ 
     this.id = this.route.snapshot.params['id'];
     this.sub = this.mds.getAlbumById(this.id).subscribe(data => this.album = data);
   }
 
-  addToFavourites(trackID: any, user:any) {
-    // if (this.mds.addToFavourites(trackID)) {
-    //   this.msb.open("Adding to Favourites...", "Done", { duration: 1500 });
-    // }
+  addToFavourites(track: any, user:any) {
+   
+    console.log(this.sub);
 
+  
     this.user = this.rs.getCurrentUser();
-    console.log(this.user);
-    this.mds.addToFavourites(trackID, this.user.userId).subscribe(
+    console.log(track)
+    this.rs.setFavArray(track);
+   
+    this.mds.addToFavourites(track.name, this.user.userId).subscribe(
       (data) => {
         this.msb.open("Adding to Favourites...", "Done", { duration: 1500 });
       },

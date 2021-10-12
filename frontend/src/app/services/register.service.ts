@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 export class RegisterService {
 isActivated =false;
 data;
+favArray:Array<any>=[];
 
   constructor(private http:HttpClient, private r: Router){
 
@@ -57,4 +58,18 @@ getCurrentUser(){
 resetCurrentUser(){
   this.data = null;
 }
+getFav(id){
+  
+  return this.http.get(`http://localhost:8080/mainapp/loadallfav/${id}`)
+}
+
+setFavArray(data){
+ this.favArray.push(data);
+ //console.log(this.favArray)
+}
+getFavArray(){
+  return this.favArray;
+}
+
+
 }

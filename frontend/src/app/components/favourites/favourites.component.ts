@@ -9,25 +9,27 @@ import { MusicDataService } from '../../services/musica-data.service';
   styleUrls: ['./favourites.component.css']
 })
 export class FavouritesComponent implements OnInit, OnDestroy {
-  favourites: Array<any>;
+  favourites: any;
   sub: Subscription;
   user:any;
   constructor(private mds: MusicDataService, private rs: RegisterService) { }
 
   ngOnInit(): void {
     this.user = this.rs.getCurrentUser();
-    this.sub = this.mds.getFavourites(this.user.userId)
-      .subscribe(data => {
-        this.favourites = data.tracks;
-      })
+    // this.sub = this.mds.getFavourites(this.user.userId)
+    //   .subscribe(data => {
+    //     this.favourites = data.tracks;
+    //   })
+
+    this.favourites = this.rs.getFavArray();
+    
   }
 
-  removeFromFavourites(id: any) {
-    this.mds.removeFromFavourites(id)
-    .subscribe(data=>{
-      this.favourites=data.tracks;
-    });
+  load(){
+    this.favourites = this.rs.getFavArray();
+    console.log(this.favourites)
   }
+  
 
   ngOnDestroy() {
     this.sub?.unsubscribe();
