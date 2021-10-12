@@ -18,11 +18,11 @@ const routes: Routes = [];
 @NgModule({
   imports: [RouterModule.forRoot([
   { path: 'landingpage', component: LandingpageComponent, canActivate: [RouterGuard]},
-  { path: 'artist/:id', component: ArtistDiscographyComponent },
-  { path: 'album/:id', component: AlbumComponent},
-  { path: 'about', component: AboutComponent},
-  { path: "search", component: SearchResultComponent },
-  { path: "favourites", component: FavouritesComponent },
+  { path: 'artist/:id', component: ArtistDiscographyComponent, canActivate: [RouterGuard] },
+  { path: 'album/:id', component: AlbumComponent, canActivate: [RouterGuard]},
+  { path: 'about', component: AboutComponent, canActivate: [RouterGuard]},
+  { path: "search", component: SearchResultComponent, canActivate: [RouterGuard] },
+  { path: "favourites", component: FavouritesComponent, canActivate: [RouterGuard] },
   { path: 'register', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/register', pathMatch: 'full' },

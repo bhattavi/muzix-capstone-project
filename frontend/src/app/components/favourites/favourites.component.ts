@@ -16,10 +16,7 @@ export class FavouritesComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.user = this.rs.getCurrentUser();
-    // this.sub = this.mds.getFavourites(this.user.userId)
-    //   .subscribe(data => {
-    //     this.favourites = data.tracks;
-    //   })
+  
 
     this.favourites = this.rs.getFavArray();
     

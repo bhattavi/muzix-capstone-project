@@ -65,7 +65,7 @@ getFav(id){
 
 setFavArray(data){
  this.favArray.push(data);
- //console.log(this.favArray)
+ 
 }
 getFavArray(){
   return this.favArray;
